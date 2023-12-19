@@ -37,9 +37,21 @@ export class RegistratiComponent implements OnInit{
   }
 
   inviaDatiRegistrazione() {
-    if (this.registrazioneForm.valid) {
-      console.log(this.registrazioneForm.value);
-    }
+
+
+      fetch('http://localhost:1337/registrati', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(this.registrazioneForm.value),
+      })
+          .then(response => response.json())
+          .then(json => {
+            console.log('Data sent successfully:', json);
+            // Puoi anche chiamare fetchData() qui per aggiornare i dati dopo l'invio
+          })
+          .catch(err => console.error("Request failed: ", err));
   }
   logFormState() {
     console.log(this.registrazioneForm.value );

@@ -35,7 +35,7 @@
     </div>
       <br>
 
-    <button style="width: 240px; border-radius: 20px;" type="submit" class="btn btn-primary  mt-3 mb-3" [ngClass]="{'btn-secondary': reactiveForm.invalid,'btn-primary':reactiveForm.valid}" [disabled]="reactiveForm.invalid" >LOGIN</button>
+    <button style="width: 240px; border-radius: 20px;" type="submit" class="btn btn-primary  mt-3 mb-3" [ngClass]="{'btn-secondary': reactiveForm.invalid,'btn-primary':reactiveForm.valid}" [disabled]="reactiveForm.invalid" (click)="accedi()">LOGIN</button>
 
 
 </div>
