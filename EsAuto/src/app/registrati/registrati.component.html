@@ -1,0 +1,55 @@
+<div class="princ">
+<form [formGroup]="registrazioneForm" (ngSubmit)="inviaDatiRegistrazione()">
+  <div style="width: 300px; height: 600px; border: 1px solid black; display: flex; flex-direction: column; align-items: center; justify-content: center;border-radius: 30px">
+
+  <h1>REGISTRATI</h1>
+  <!-- Codice Fiscale -->
+  <div class="form-group">
+    <label for="codiceFiscale">Codice Fiscale</label>
+    <input type="text" class="form-control" id="codiceFiscale" formControlName="codiceFiscale">
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="mail">Email</label>
+    <input type="email" class="form-control" id="mail" formControlName="mail">
+  </div>
+
+  <!-- Password -->
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+  </div>
+
+  <!-- Conferma Password -->
+  <div class="form-group">
+    <label for="confermaPassword">Conferma Password</label>
+    <input type="password" class="form-control" id="confermaPassword" formControlName="confermaPassword">
+    <div *ngIf="registrazioneForm.hasError('mismatch', 'confermaPassword')">
+      Le password non corrispondono.
+    </div>
+  </div>
+
+  <!-- Cognome -->
+  <div class="form-group">
+    <label for="cognome">Cognome</label>
+    <input type="text" class="form-control" id="cognome" formControlName="cognome">
+  </div>
+
+  <!-- Nome -->
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" formControlName="nome">
+  </div>
+
+  <!-- Indirizzo -->
+  <div class="form-group">
+    <label for="indirizzo">Indirizzo</label>
+    <input type="text" class="form-control" id="indirizzo" formControlName="indirizzo">
+  </div>
+
+  <button style="width: 240px; border-radius: 20px;" type="submit" class="btn btn-primary  mt-3 mb-3" [ngClass]="{'btn-secondary': registrazioneForm.invalid,'btn-primary':registrazioneForm.valid}" [disabled]="registrazioneForm.invalid" >Registrati</button>
+  </div>
+</form>
+
+</div>

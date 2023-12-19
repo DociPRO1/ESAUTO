@@ -1,0 +1,12 @@
+<div *ngIf="mostraLogin; else mostraRegistrazione">
+  <login></login>
+</div>
+<ng-template #mostraRegistrazione>
+  <registrati></registrati>
+</ng-template>
+<div class="princ">
+
+  <button class="btn btn-light"  (click)="mostraLogin = !mostraLogin">
+    {{ mostraLogin ? 'Registrati' : 'Login' }}
+  </button>
+</div>
