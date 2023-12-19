@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from "@angular/forms";
 import { RegistratiComponent } from './registrati/registrati.component';
+import { AutoComponent } from './auto/auto.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { RegistratiComponent } from './registrati/registrati.component';
     AppComponent,
     LoginComponent,
     RegistratiComponent,
+    AutoComponent,
   ],
   imports: [
     BrowserModule,

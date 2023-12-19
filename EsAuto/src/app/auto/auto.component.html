@@ -1,0 +1,12 @@
+<div style="margin-right: 300px">
+
+<div *ngFor="let auto of data" class="card card-body myCard" (click)="onCardClick(auto)">
+    <img [src]="'/assets/img/' + auto.marca + '.jpg'" alt="{{ auto.modello }}">
+    <div class="auto-info">
+        <h4>{{ auto.marca }} {{ auto.modello }}</h4>
+        <p>Categoria: {{ auto.categoria }}</p>
+        <p>Alimentazione: {{ auto.alimentazione }}</p>
+    </div>
+</div>
+
+</div>

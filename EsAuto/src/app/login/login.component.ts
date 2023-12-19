@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Output() accessoRiuscito = new EventEmitter<void>();
+
 
   private url = "http://localhost:1337/prendi";
 
@@ -14,15 +16,7 @@ export class LoginComponent implements OnInit {
   pers: { codiceFiscale: string, mail: string, password: string, confermaPassword: string, cognome: string, nome: string, indirizzo: string }[] = [];
 
   ngOnInit() {
-    fetch(this.url)
-      .then(response => response.json())
-      .then(json => {
-        this.data = json;
-        console.log(this.data)
-      })
-      .catch(err => console.log("request failed: ", err))
-
-    fetch("http://localhost:1337/persData")
+  fetch("http://localhost:1337/persData")
         .then(response => response.json())
         .then(json => {
           this.pers = json;
@@ -73,6 +67,10 @@ export class LoginComponent implements OnInit {
     } else {
       // L'utente non è autenticato, puoi gestire il caso qui
       console.log('Credenziali non valide');
+    }
+
+    if (utenteAutenticato) {
+      this.accessoRiuscito.emit();
     }
 
   }
