@@ -71,6 +71,33 @@ let server = http.createServer((richiesta, res) => {
       }
       break;
 
+    case '/inserisci':
+
+
+      if (richiesta.method === 'POST') {
+        let body = '';
+
+        richiesta.on('data', (chunk) => {
+          body += chunk;
+        });
+
+        richiesta.on('end', () => {
+          try {
+            const dati = JSON.parse(body);
+            salvaDatiSuFile('vendite.json', dati);
+            res.writeHead(200, header);
+            res.end(JSON.stringify({ success: true }));
+          } catch (error) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: 'Errore nel parsing JSON' }));
+          }
+        });
+      } else {
+        res.writeHead(405, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, error: 'Metodo non consentito' }));
+      }
+      break;
+
 
     default:
       infoUrl.pathname = infoUrl.pathname.replace('/', '');

@@ -26,4 +26,22 @@ export class AppComponent{
   toggleLoginRegistrazione() {
     this.mostraLoginComponent = !this.mostraLoginComponent;
   }
+
+
+  compra(autoSelezionata: any) {
+    fetch('http://localhost:1337/inserisci', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(autoSelezionata),
+    })
+        .then(response => response.json())
+        .then(json => {
+          console.log('Data sent successfully:', json);
+          // Puoi anche chiamare fetchData() qui per aggiornare i dati dopo l'invio
+        })
+        .catch(err => console.error("Request failed: ", err));
+
+  }
 }
