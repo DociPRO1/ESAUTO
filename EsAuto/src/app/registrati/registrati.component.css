@@ -4,3 +4,17 @@
   justify-content: center;
   padding-top: 25vh;
 }
+
+.linkk{
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.linkk:hover {
+  text-decoration: underline;
+  color: white;
+}
+

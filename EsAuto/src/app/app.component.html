@@ -1,22 +1,17 @@
-<!-- Nel template del tuo componente padre -->
-<div *ngIf="mostraAuto; else mostraLogin">
+<div class="sfon"><div *ngIf="mostraAuto; else mostraLogin">
   <auto (mostraDettagli)="mostraDettagliAuto($event)"></auto>
 </div>
-<ng-template #mostraLogin>
-  <div *ngIf="mostraLoginComponent; else mostraRegistrazione">
-    <login (accessoRiuscito)="gestisciAccessoRiuscito()"></login>
-  </div>
-</ng-template>
-<ng-template #mostraRegistrazione>
-  <registrati></registrati>
-</ng-template>
-<div class="princ" *ngIf="!mostraAuto">
-  <button class="btn btn-light" (click)="toggleLoginRegistrazione()">
-    {{ mostraLogin ? 'Registrati' : 'Login' }}
-  </button>
-</div>
+  <ng-template #mostraLogin>
+    <div *ngIf="mostraLoginComponent; else mostraRegistrazione">
+      <login (accessoRiuscito)="gestisciAccessoRiuscito()" (mostraRegistrati)="toggleLoginRegistrazione()"></login>
+    </div>
+  </ng-template>
+  <ng-template #mostraRegistrazione>
+    <registrati (mostraLogin)="toggleLoginRegistrazione()"></registrati>
+  </ng-template>
 
-<div *ngIf="autoSelezionata" class="lato">
+
+<div style="color: black" *ngIf="autoSelezionata" class="lato">
   <h2>Dettagli Auto</h2>
   <p>Marca: {{ autoSelezionata.marca }}</p>
   <p>Modello: {{ autoSelezionata.modello }}</p>
@@ -26,4 +21,5 @@
   <p>Consumi: {{ autoSelezionata.dat_tecnici.consumi }}</p>
 
   <button class="btn btn-danger" (click)="compra(autoSelezionata)">Compra</button>
+</div>
 </div>

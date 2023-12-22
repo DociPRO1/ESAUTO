@@ -1,11 +1,11 @@
-.princ{
+.princ {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  height: 100vh;
 }
 
-.lato{
+.lato {
   position: fixed;
   top: 0;
   right: 0;
@@ -14,5 +14,14 @@
   background-color: #f0f0f0;
   padding: 20px;
   box-shadow: -5px 0 5px rgba(0, 0, 0, 0.1);
+}
 
+.sfon {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #000000, #e74c3c);
+  background: linear-gradient(to right, #000000, #e74c3c);
+  color: white;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 
@@ -9,10 +9,15 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 })
 export class RegistratiComponent implements OnInit{
   registrazioneForm: FormGroup;
+  @Output() mostraLogin = new EventEmitter<void>();
+
+  switchToLogin(): void {
+    this.mostraLogin.emit();
+  }
 
   constructor(private formBuilder: FormBuilder) {
     this.registrazioneForm = this.formBuilder.group({
-      codiceFiscale: ['', [Validators.required]],
+      codiceFiscale: ['', [Validators.required,Validators.pattern('^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$')]],
       mail: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$')]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confermaPassword: ['', [Validators.required, this.passwordMatchValidator]],
@@ -49,7 +54,7 @@ export class RegistratiComponent implements OnInit{
           .then(response => response.json())
           .then(json => {
             console.log('Data sent successfully:', json);
-            // Puoi anche chiamare fetchData() qui per aggiornare i dati dopo l'invio
+            alert("registrazione avvenuta con successo")
           })
           .catch(err => console.error("Request failed: ", err));
   }

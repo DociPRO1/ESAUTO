@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AppComponent{
 
+  mostraLogin: boolean = true;
 
   autoSelezionata: any;
 
@@ -29,6 +30,7 @@ export class AppComponent{
 
 
   compra(autoSelezionata: any) {
+
     fetch('http://localhost:1337/inserisci', {
       method: 'POST',
       headers: {
@@ -39,7 +41,7 @@ export class AppComponent{
         .then(response => response.json())
         .then(json => {
           console.log('Data sent successfully:', json);
-          // Puoi anche chiamare fetchData() qui per aggiornare i dati dopo l'invio
+          alert("Auto comprata con successo")
         })
         .catch(err => console.error("Request failed: ", err));
 

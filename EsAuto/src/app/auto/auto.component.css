@@ -1,8 +1,10 @@
 .myCard{
     width: 260px;
-    height: 400px;
     display: inline-block;
     margin: 15px;
+    box-sizing: border-box;
+    vertical-align: top;
+    color: black;
 
 }
 
